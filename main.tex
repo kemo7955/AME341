@@ -6,7 +6,13 @@
 \usepackage{amsfonts}  % math fonts
 \usepackage{latexsym}  % math fonts
 \usepackage{amssymb}  % math fonts
-\usepackage[numbered]{matlab-prettifier}
+\usepackage{mathtools} % Give more control of how equations are displayed
+\usepackage{appendix} % Lets you create an appendix
+\usepackage[numbered]{matlab-prettifier} % Let's me import MATLAB code in a nice format
+\usepackage{indentfirst} % This indents the first paragraph. By default latex won't do it.
+
+\newtagform{show_eq}{(Eq.\ }{)}  % how the equation numbers are displayed
+\usetagform{show_eq} % this goes with the \newtagform
 
 \begin{document}
 
@@ -14,16 +20,16 @@
 \begin{titlepage}
  \begin{center}
  \vspace*{1in}
-{\Huge Comparison Between Experimental and Analytical Op-Amp Models}\\
+{\Huge Comparison Between Experimental and Analytical Operational Amplifier in a Closed Loop Configuration Models}\\
     \bigskip
     by\\
     \bigskip
-    {\large Kevin Moran} \\
+    {\Large Kevin Moran} \\
     \bigskip
     Lab Partner : Jorge\\
-    Date of Experiment : October 14th, 2020
+    Date of Experiment : Thursday, October 14th, 2020
 
-    \bigskip\bigskip\bigskip%
+    \bigskip\bigskip\bigskip
     University of Southern California\\
     Aerospace and Mechanical Engineering Department\\
     AME 341A : Mechoptronics
@@ -34,19 +40,29 @@
 % ================================== Main Text ==========================================
 
 
-\begin{abstract}
-    This is where you write your abstract.
-\end{abstract}
-
+% --------------------------------- Introduction ----------------------------------------------
 \section{Introduction}
-This is where you write the introduction
+Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part of data acquisition circuits and circuits that rely on threshold voltage inputs to activate additional components. As the name suggest, om-amps serve as voltage amplifiers and can be setup in various configurations using passive circuit elements such as resistors and capacitors. Figure 1 illustrates a LM741 op-amp in a negative feedback loop configuration.
 
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{test}
+    \label{fig:NFL}
+\end{figure}
+
+% -------------------------- Methods and Materials -------------------------------------------
 \section{Methods and Materials}
 This is where you write the methods and materials section
 
+
+% --------------------------------- Results ----------------------------------------------
 \section{Results}
 This is where you show your results and key values
 
+% --------------------------------- MATLAB ----------------------------------------------
+\appendix
 \section{MATLAB Script}
-\lstinputlisting[basicstyle=\footnotesize,style=Matlab-editor]{lab6.m}
+\lstinputlisting[style=Matlab-editor]{lab6.m}
+
 \end{document}
