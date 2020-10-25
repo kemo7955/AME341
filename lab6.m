@@ -46,7 +46,7 @@ end
 f02  = .5 * ( f2(i) + f2(i+1) );
 df02 = .5 * abs( f2(i) - f2(i+1) );
 %% Build Analytical Model. 
-% k represents the constant associated with the filter A/(2*pi*mu)
+% k represents the constant associated with the Op-Amp A/(2*pi*mu)
 k1 = f01*G1;
 k2 = f02*G2;
 dk1 = k1 * sqrt( (df01/f01)^2 + (dG1/G1)^2 ); 
@@ -59,8 +59,8 @@ figure(1)
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
 ylim([0 110])
 hold on
-scatter(f1,H1,'s','MarkerFaceColor','b')
-errorbar(f1,H1,dH1*1000,'vertical','LineStyle','none')
+scatter(f1,H1,'o','MarkerFaceColor','b')
+errorbar(f1,H1,dH1,'vertical','LineStyle','none')
 plot(f_theo,H_theo1,'k','LineWidth',1.5)
 xlabel('$f[Hz]$','FontSize',12)
 ylabel('$|H|$','FontSize',12)
@@ -69,7 +69,7 @@ figure(2)
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
 ylim([0 110])
 hold on
-scatter(f2,H2,'s','MarkerFaceColor','b')
+scatter(f2,H2,'o','MarkerFaceColor','b')
 errorbar(f2,H2,dH2,'vertical','LineStyle','none')
 plot(f_theo,H_theo2,'k','LineWidth',1.5)
 xlabel('$f[Hz]$','FontSize',12)
