@@ -42,14 +42,17 @@
 
 % --------------------------------- Introduction ----------------------------------------------
 \section{Introduction}
-Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part of data acquisition circuits and circuits that rely on threshold voltage inputs to activate additional components. As the name suggest, om-amps serve as voltage amplifiers and can be setup in various configurations using passive circuit elements such as resistors and capacitors. Figure 1 illustrates a LM741 op-amp in a negative feedback loop configuration.
+Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part of data acquisition circuits and circuits that rely on threshold voltage inputs to activate additional components. As the name suggest, om-amps serve as voltage amplifiers and can be setup in various configurations using passive circuit elements such as resistors and capacitors. Figure \ref{NFL} illustrates a LM741 op-amp in a negative feedback loop configuration.
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics{}
-    \caption{test}
-    \label{fig:NFL}
+    \includegraphics[scale=1.25]{feedback.png}
+    \caption{\small LM741 operation amplifier negative feedback loop schematic. All components of the circuit are grounded using a common ground. CH1 and CH2 represent probe connection on Vbench Interface}
+    \label{NFL}
 \end{figure}
+
+Other words
+
 
 % -------------------------- Methods and Materials -------------------------------------------
 \section{Methods and Materials}
@@ -61,6 +64,7 @@ This is where you write the methods and materials section
 This is where you show your results and key values
 
 % --------------------------------- MATLAB ----------------------------------------------
+\newpage
 \appendix
 \section{MATLAB Script}
 \lstinputlisting[style=Matlab-editor]{lab6.m}
