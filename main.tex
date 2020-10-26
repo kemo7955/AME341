@@ -47,23 +47,65 @@ Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part 
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=1.25]{feedback.png}
-    \caption{\small LM741 operation amplifier negative feedback loop schematic. All components of the circuit are grounded using a common ground. CH1 and CH2 represent probe connection on Vbench Interface}
+    \caption{\small LM741 operation amplifier negative feedback loop schematic. All components of the circuit are grounded using a common ground. CH1 and CH2 represent probe connection on Vbench Interface.}
     \label{NFL}
 \end{figure}
 
-Other words
+\subsection{Gain}
+In an open loop configuration, the output voltage often reaches saturation and may not provide useful results in many data acquisitions applications. A negative feedback loop, however, allows for greater control over amplification characteristics. Alternatively referred to as \textit{gain}, the relationship between input and output voltages can be expressed as :
 
+\begin{equation}
+    \label{Gain}
+    e_o = -Ge_i = -\frac{R_f}{R_i}e_i
+\end{equation}
+$G$ represents gain, and $R_f$ and $R_i$ correspond to resistors shown in Figure \ref{NFL}. The negative sign in Equation \ref{Gain} is a consequence of the input voltage, $e_i$, feeding into the inverting channel on the op-amp, and $e_o$ represents the expected output from the op-amp. Unlike passive circuit elements, op-amps need an external power source to operate. The power supply is shown to by the inputs V+ and V-.
 
-% -------------------------- Methods and Materials -------------------------------------------
+\subsection{First Order System}
+Developing a first order differential equation and making the assumption $R_f >> R_i$ yields 
+\begin{equation}
+    \label{1stOrder}
+    \frac{\mu R_f}{A R_i}\frac{de_o}{dt} + e_o = -\frac{R_f}{R_i}e_i
+\end{equation}
+where variables $\mu$ and $A$ are properties of a given op-amp. Solving the first order ODE yields a complex solution, however, deriving a transfer function and taking taking the modulus produces a semi-analytical model : 
+\begin{equation}
+    \label{Htheo}
+    |H|_{theo} = \frac{R_f/R_i}{\sqrt{1 + \omega^2(\frac{\mu}{A}\frac{R_f}{R_i})^2}}
+\end{equation}
+Since $\mu$ and $A$ are experimentally derive quantities, the subscript \textit{theo} denotes a semi-theoretical model. Furthermore, the modulus of the transfer function can also be written in terms of input and output voltage as
+\begin{equation}
+    \label{Hexp}
+    |H|_{exp} = \frac{e_o}{e_i}
+\end{equation}
+where the subscript \textit{exp} refers to a model that is exclusively dependent on variables measured during the experiment.
+
+\subsection{Cutoff Frequency and Gain Bandwidth Product}
+In a negative feedback loop, the relationship between $|H|$ vs $f$ can be broken categorized into three distinct regions :
+\begin{align*}
+    2 \pi f \frac{\mu R_f}{A R_i} << 1 &  \Rightarrow |H| = G \\
+    2 \pi f \frac{\mu R_f}{A R_i} >> 1 &  \Rightarrow |H| = 1 \\
+    2 \pi f \frac{\mu R_f}{A R_i} \ =1 &  \Rightarrow |H| = \frac{G}{\sqrt{2}}
+\end{align*}
+The latter of the regions represents a particularly interesting relationship known as a circuits cutoff frequency. Explicitly defined by relationship,
+\begin{equation}
+    \label{cutoff}
+    f_0 = \frac{A R_i}{2\pi \mu R_f}
+\end{equation}
+the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer amplify the input voltage and thus, begins to attenuate the signal. In addition to identifying the range of frequencies for max gain given a set of resistors in a circuit, the cutoff frequency is also important for defining an op-amps Gain Bandwidth Product (GBP). Represented by the variable $f^*$ in Equation \ref{GBP}, GBP is strictly a property a property of the op-amp in the circuit that governs the inverse relationship between gain and cutoff frequency (i.e., as gain increase, cutoff frequency decrease and vice versa).
+\begin{equation}
+    \label{GBP}
+    f^* = f_0G
+\end{equation}
+
+% -------------------------- Methods and Materials ------------------------------
 \section{Methods and Materials}
 This is where you write the methods and materials section
 
 
-% --------------------------------- Results ----------------------------------------------
+% --------------------------------- Results ----------------------------------------
 \section{Results}
 This is where you show your results and key values
 
-% --------------------------------- MATLAB ----------------------------------------------
+% --------------------------------- MATLAB ----------------------------------------
 \newpage
 \appendix
 \section{MATLAB Script}
