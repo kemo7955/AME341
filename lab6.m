@@ -49,9 +49,9 @@ while H2(i) >= G2*.707
 end
 f02  = .5 * ( f2(i) + f2(i+1) );
 df02 = .5 * abs( f2(i) - f2(i+1) );
-f2_sub = f2(i-5:i+5);
-H2_sub = H2( i-5:i+5);
-dH2_sub = dH2( i-5:i+5);
+f2_sub = f2(i-7:i+3);
+H2_sub = H2( i-7:i+3);
+dH2_sub = dH2( i-7:i+3);
 
 %% Build Analytical Model. 
 % k represents the constant associated with the Op-Amp A/(2*pi*mu)
@@ -80,7 +80,7 @@ legend([p1s cutoff1 p1p],{'Experimental Data','Cutoff Frequency','Semi-Theoricia
 ax1 = axes('Position',[.45 .25 .2 .2]);
 box on;hold on
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
-plot(f1_sub,H1_sub,'o','MarkerSize',3,'MarkerFaceColor','b')
+plot(f1_sub,H1_sub,'o','MarkerSize',6,'MarkerFaceColor','b')
 errorbar(f1_sub,H1_sub,dH1_sub,'vertical','LineStyle','none')
 xline(f01,'--r');
 plot(f_theo,H_theo1,'k','LineWidth',1.5);
@@ -104,7 +104,7 @@ legend([p2s cutoff2 p2p],{'Experimental Data','Cutoff Frequency','Semi-Theoricia
 ax2 = axes('Position',[.25 .6 .2 .2]);
 box on;hold on
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
-plot(f2_sub,H2_sub,'o','MarkerSize',3,'MarkerFaceColor','b')
+plot(f2_sub,H2_sub,'o','MarkerSize',6,'MarkerFaceColor','b')
 errorbar(f2_sub,H2_sub,dH2_sub,'vertical','LineStyle','none')
 plot(f_theo,H_theo2,'k','LineWidth',1.5)
 xline(f02,'--r');
