@@ -99,7 +99,7 @@ p2p = plot(f_theo,H_theo2,'k','LineWidth',1.5);
 cutoff2 = xline(f02,'--r')
 xlabel('$f[Hz]$','FontSize',12)
 ylabel('$|H|$','FontSize',12)
-legend([p2s cutoff2 p2p],{'Experimental Data','Cutoff Frequency','Semi-Theoricial'})
+legend([p2s p2p],{'Experimental Data','Semi-Theoricial'})
 % ------------------- Minor-Plot for Figure 2 -----------------------------
 ax2 = axes('Position',[.25 .6 .2 .2]);
 box on;hold on
