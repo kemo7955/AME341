@@ -108,10 +108,14 @@ the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer
 
 
 % -------------------------- Methods and Materials ------------------------------
-\section{Materials and Methods}
+\section{Procedures}
+\subsection{Materials and Experiment Setup}
 By using a National Instruments VirtualBench VB-8012 to take measurements and control input signals, and setting up a negative feedback loop as shown in Figure \ref{NFL}, the LM741 op-amp was characterized using frequencies ranging from 100Hz to 1MHz and two different gains. The input resistors were selected based on nominal values of 2k$\Omega$ and 20k$\Omega$ for setups 1 and 2, respectively. The feedback resistor was selected based on a nominal value of 200k$\Omega$ and was kept throughout the entire experiment. All resistors were measured before being integrated into the circuit. Channel 1 and channel 2 were setup to measure input and output voltages, and all grounds were connected to a common ground. Both experimental setups were based on the schematic shown in Figure \ref{NFL} and followed identical procedures. 
 
+\subsection{Methods}
 Beginning with a frequency of 100Hz, the experimental gain was calculated by taking ratio between measured values of output and input voltages. According the semi-theoretical model, the ratio between output and input voltage should be equal to ratio between feedback and input resistors. This served as the initial benchmark for comparing the experimental and semi-theoretical models.
+
+Since it was known that the relationship between gain and frequency is non-linear near the cutoff frequency, input and output voltage measurements were concentrated in this region. Initial guesses for the cutoff frequency were determined by estimating what the output voltage would need to be to satisfy the requirement $e_o/e_i = G/\sqrt{2}$. Since $e_i$ was relatively constant, the frequency was a adjusted in a series of trial and error modifications until $e_o$ was measurement within the appropriate value. Once the cutoff frequency was determined within reasonable experimental expectation, input and output voltages were measured, used to calculate $|H|$ using Equation \ref{Hexp}, and plotted until on a log-log scale until the non-linear region of the $|H|\ vs\ f$ graph was well characterized. Afterwards, the linear regions were characterized by taking a enough data to adequately represent the system response to relatively high and low frequencies.
 
 
 
