@@ -72,7 +72,7 @@ hold on
 p1s = scatter(f1,H1,'o','MarkerFaceColor','b');
 errorbar(f1,H1,dH1,'vertical','LineStyle','none')
 p1p = plot(f_theo,H_theo1,'k','LineWidth',1.5);
-cutoff1 = xline(f01,'--r')
+cutoff1 = xline(f01,'--r');
 xlabel('$f[Hz]$','FontSize',12)
 ylabel('$|H|$','FontSize',12)
 legend([p1s cutoff1 p1p],{'Experimental Data','Cutoff Frequency','Semi-Theoricial'})
@@ -82,8 +82,8 @@ box on;hold on
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
 plot(f1_sub,H1_sub,'o','MarkerSize',3,'MarkerFaceColor','b')
 errorbar(f1_sub,H1_sub,dH1_sub,'vertical','LineStyle','none')
-xline(f01,'--r')
-plot(f_theo,H_theo1,'k','LineWidth',1.5)
+xline(f01,'--r');
+plot(f_theo,H_theo1,'k','LineWidth',1.5);
 xlabel('','FontSize',10,'Interpreter','latex')
 ylabel('','FontSize',10,'Interpreter','latex')
 xlim([f1_sub(1) f1_sub(end)])
@@ -96,7 +96,7 @@ hold on
 p2s = scatter(f2,H2,'o','MarkerFaceColor','b');
 errorbar(f2,H2,dH2,'vertical','LineStyle','none')
 p2p = plot(f_theo,H_theo2,'k','LineWidth',1.5);
-cutoff2 = xline(f02,'--r')
+cutoff2 = xline(f02,'--r');
 xlabel('$f[Hz]$','FontSize',12)
 ylabel('$|H|$','FontSize',12)
 legend([p2s cutoff2 p2p],{'Experimental Data','Cutoff Frequency','Semi-Theoricial'})
@@ -107,7 +107,7 @@ set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
 plot(f2_sub,H2_sub,'o','MarkerSize',3,'MarkerFaceColor','b')
 errorbar(f2_sub,H2_sub,dH2_sub,'vertical','LineStyle','none')
 plot(f_theo,H_theo2,'k','LineWidth',1.5)
-xline(f02,'--r')
-xlabel('$f[Hz]$','FontSize',10,'Interpreter','latex')
-ylabel('$|H|$','FontSize',10,'Interpreter','latex')
+xline(f02,'--r');
+xlabel('','FontSize',10,'Interpreter','latex')
+ylabel('','FontSize',10,'Interpreter','latex')
 xlim([f2_sub(1) f2_sub(end)])
