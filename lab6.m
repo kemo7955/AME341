@@ -61,7 +61,7 @@ dk1 = k1 * sqrt( (df01/f01)^2 + (dG1/G1)^2 );
 dk2 = k2 * sqrt( (df02/f02)^2 + (dG2/G2)^2 ); 
 f_theo = [100:100:1000000]';
 H_theo1 = G1 ./ sqrt( 1 + (f_theo/k1*G1).^2 );
-H_theo2 = G2 ./ sqrt( 1 + (f_theo/k2*G2).^2 );
+H_theo2 = G2 ./ sqrt( 1 + (f_theo/k1*G2).^2 );
 
 %% Plot
 % ==========================  Low Gain Plot ===============================
