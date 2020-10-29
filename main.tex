@@ -93,7 +93,7 @@ The latter of the regions represents a particularly interesting relationship kno
     \label{cutoff}
     f_0 = \frac{A R_i}{2\pi \mu R_f}
 \end{equation}
-the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer effectively amplify the input voltage and thus, begins to attenuate the signal. In addition to identifying the range of frequencies for optimal gain in a given circuit, the cutoff frequency is also important for defining an op-amps Gain Bandwidth Product (GBP). Represented by the variable $f^*$ in Equation 6, GBP is strictly a property of the op-amp in the circuit. This governs the inverse relationship between gain and cutoff frequency (i.e., as gain increase, cutoff frequency decrease and vice versa).
+the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer effectively amplify the input voltage and thus, begins to attenuate the signal. In addition to identifying the range of frequencies for optimal gain in a given circuit, the cutoff frequency is also important for defining an op-amps Gain Bandwidth Product (GBP). Represented by the variable $f^*$ in Equation 6, GBP is strictly a property of the op-amp in the circuit. This governs the inverse relationship between gain and cutoff frequency (i.e., as gain increases, cutoff frequency decreases and vice versa).
 \begin{equation}
     \label{GBP}
     f^* = f_0G
@@ -110,12 +110,12 @@ the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer
 % -------------------------- Methods and Materials ------------------------------
 \section{Procedures}
 \subsection{Materials and Experiment Setup}
-By using a National Instruments VirtualBench VB-8012 to take measurements and control input signals, and setting up a negative feedback loop as shown in Figure \ref{NFL}, the LM741 op-amp was characterized using frequencies ranging from 100Hz to 1MHz and two different gains. The input resistors were selected based on nominal values of 2k$\Omega$ and 20k$\Omega$ for setups 1 and 2, respectively. The feedback resistor was selected based on a nominal value of 200k$\Omega$ and was kept throughout the entire experiment. All resistors were measured before being integrated into the circuit. Channel 1 and channel 2 were setup to measure input and output voltages, and all grounds were connected to a common ground. Both experimental setups were based on the schematic shown in Figure \ref{NFL} and followed identical procedures. 
+By using a National Instruments VirtualBench VB-8012 to take measurements and control input signals, the LM741 op-amp was characterized using frequencies ranging from 100Hz to 1MHz. The experiment consisted of two nearly identical circuits with subtle different in input resistors. Input resistors were selected based on nominal values of 20k$\Omega$ and 2k$\Omega$ for setups 1 and 2, respectively. The feedback resistor was selected based on a nominal value of 200k$\Omega$ and was kept throughout the entire experiment. This selection of resistors ensured setup 1 would be a low gain circuit, whereas, setup 2 would be a high gain circuit.  All resistors were measured before being integrated into the circuit. Channel 1 and channel 2 were setup to measure input and output voltages, and all grounds were connected to a common ground. Both experimental setups were based on the schematic shown in Figure \ref{NFL} and followed identical procedures. 
 
 \subsection{Methods}
 Beginning with a frequency of 100Hz, the experimental gain was calculated by taking the ratio between measured values of output and input voltages. According to the semi-theoretical model, the ratio between output and input voltages should be equal to the ratio between feedback and input resistors. This served as the initial benchmark for comparing the experimental and semi-theoretical models.
 
-Since it was known that the relationship between gain and frequency is non-linear near the cutoff frequency, input and output voltage measurements were concentrated in this region. Initial guesses for the cutoff frequency were determined by estimating what the output voltage would need to be to satisfy the requirement $e_o/e_i = G/\sqrt{2}$. Since $e_i$ was relatively constant, the frequency was adjusted in a series of trial and error modifications until $e_o$ was measurement within the appropriate value. Once the cutoff frequency was determined within reasonable experimental expectation, input and output voltages were measured, used to calculate amplification via Equation \ref{Hexp}, and plotted until on a log-log scale until the non-linear region of the $|H|\ vs\ f$ graph was well characterized. Afterwards, the linear regions were characterized by taking a enough data to adequately represent the system response to relatively high and low frequencies. Approximately five to ten data points in each linear region were obtained, ensuring the frequency values were spaced out to evenly to cover the entire region.
+Since it was known that the relationship between gain and frequency is non-linear near the cutoff frequency, input and output voltage measurements were concentrated in this region. Initial guesses for the cutoff frequency were determined by estimating what the output voltage would need to be to satisfy the requirement $e_o/e_i = G/\sqrt{2}$. Since $e_i$ was relatively constant, the frequency was adjusted in a series of trial and error modifications until $e_o$ was measured within the appropriate value. Once the cutoff frequency was determined within reasonable experimental expectation, input and output voltages were measured, used to calculate amplification via Equation \ref{Hexp}, and plotted on a log-log scale until the non-linear region of the $|H|\ vs\ f$ graph was well characterized. Afterwards, the linear regions were characterized by taking a enough data to adequately represent the system response to relatively high and low frequencies. Approximately five to ten data points in each linear region were obtained, ensuring the frequency values were spaced out evenly to cover the entire region.
 
 % --------------------------------- Results ---------------------------------------
 \section{Results}
@@ -137,10 +137,10 @@ Figure \ref{HighG} shows gain versus input frequency data for the high gain nega
     \caption{Op-amp in a high gain configuration}
     \label{HighG}
 \end{figure}
-As anticipated, the cutoff frequency was significantly reduced as a consequence of the greater amount of gain generated. Both experimental sets of data support also the GBP as a property of the op-amp rather then other circuit elements. Regardless of the resistors chosen to create the circuit, both high and low gain configurations converged towards the same GBP. Thus, both circuits have a unique usable range for amplification that matches the ideal gain expressed in Equation \ref{Gain}. In either case, the usable range can be defined by the relationship $f<<f_0$, that is, the horizontal regions in Figures \ref{LowG} and \ref{HighG}.
+As anticipated, the cutoff frequency was significantly reduced as a consequence of the greater amount of gain generated. Both experimental sets of data also support the GBP as a property of the op-amp rather then other circuit elements. Regardless of the resistors chosen to create the circuit, both high and low gain configurations converged towards the same GBP. Thus, both circuits have a unique usable range for amplification that matches the ideal gain expressed in Equation \ref{Gain}. In either case, the usable range can be defined by the relationship $f<<f_0$, that is, the horizontal regions in Figures \ref{LowG} and \ref{HighG}.
 
 \subsection{Experimental Error}
-To concluded whether experimental and theoretical gain are equivalent, the associated error of each quantity must be taken into account. Furthermore, since experimental gain changes as the system approaches cutoff frequency, the analysis shall be performed using a low frequency data point (i.e., 100Hz). Equations \ref{dGexp} and \ref{dGtheo} represent the relative uncertainties for experimental and theoretical gain. 
+To conclud whether experimental and theoretical gain are equivalent, the associated error of each quantity must be taken into account. Furthermore, since experimental gain changes as the system approaches cutoff frequency, the analysis shall be performed using a low frequency data point (i.e., 100Hz). Equations \ref{dGexp} and \ref{dGtheo} represent the relative uncertainties for experimental and theoretical gain. 
 
 \begin{equation}
     \Delta G_{exp} = G_{exp} \sqrt{ (\frac{\Delta e_i}{e_i})^2 + (\frac{\Delta e_0}{e_0})^2}
@@ -151,7 +151,7 @@ To concluded whether experimental and theoretical gain are equivalent, the assoc
     \label{dGtheo}
 \end{equation}
 
-Since the cutoff frequency in each setup consisted of scanning through various frequencies until the amplification fell within the appropriate window, the cutoff frequency and its relative uncertainty can be expressed using the following set of equations,
+Since the cutoff frequency in each setup consisted of scanning through various frequencies until the amplification fell within the appropriate window, the cutoff frequency and its uncertainty can be expressed using the following set of equations,
 \begin{equation}
     \begin{split}
         f_0 = \frac{f_{high} + f_{low}}{2}\\
@@ -160,7 +160,7 @@ Since the cutoff frequency in each setup consisted of scanning through various f
 \end{equation}
 where the subscripts \textit{high} and \textit{low} denote the two frequencies used to fulfill the amplification requirement.
 
-Table \ref{KeyValues} summarizes key values, as well as relative uncertainties. It is shown that $G_{exp} \pm{\Delta G_{exp}} = G_{theo} \pm{\Delta G_{theo}}$ in both low and high gain configurations.
+Table \ref{KeyValues} summarizes key values, as well as respective uncertainties. It is shown that $G_{exp} \pm{\Delta G_{exp}} = G_{theo} \pm{\Delta G_{theo}}$ in both low and high gain configurations.
 \begin{table}[ht]
     \centering
     \begin{tabular}{ c | c | c | c ||c | c | c | c }
