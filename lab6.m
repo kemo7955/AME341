@@ -1,6 +1,6 @@
-clear;clc;close all
-format long
+clear;clc;close all;
 %% Import and Label Data for each setup
+%-------------------- Setup 1 Data Import -----------------
 Ri1 =  19649;
 Rf1 = 196960;
 G1 = Rf1/Ri1;
@@ -16,6 +16,7 @@ eo1 = dataSetup1(:,7)/1000;
 H1 = dataSetup1(:,8);
 dH1 = H1 .* sqrt( (deo1./eo1).^2 + (dei1./ei1).^2 );
 
+%-------------------- Setup 2 Data Import -----------------
 Ri2 =  1958;
 Rf2 = 196960;
 G2 = Rf2/Ri2;
@@ -32,17 +33,18 @@ H2 = dataSetup2(:,8);
 dH2 = H2 .* sqrt( (deo2./eo2).^2 + (dei2./ei2).^2 );
 
 %% Determine Cutoff Frequency and Uncertainty
+%-------------------- Setup 1 f0 and Delta ----------------
 i = 1;
 while H1(i) >= G1*.707
     i=i+1;
 end
-f01  = .5 * ( f1(i) + f1(i+1) );
+f01  = .5 * ( f1(i) + f1(i+1) ); 
 df01 = .5 * abs( f1(i) - f1(i+1) );
 f1_sub = f1(i-5:i+5);
 H1_sub = H1(i-5:i+5);
 dH1_sub = dH1( i-5:i+5);
 
-
+%-------------------- Setup 2 f0 and Delta ----------------
 i = 1;
 while H2(i) >= G2*.707
     i=i+1;
@@ -54,14 +56,13 @@ H2_sub = H2( i-7:i+3);
 dH2_sub = dH2( i-7:i+3);
 
 %% Build Analytical Model. 
-% k represents the constant associated with the Op-Amp A/(2*pi*mu)
-k1 = f01*G1;
-k2 = f02*G2;
-dk1 = k1 * sqrt( (df01/f01)^2 + (dG1/G1)^2 ); 
-dk2 = k2 * sqrt( (df02/f02)^2 + (dG2/G2)^2 ); 
+GBP1 = f01*G1;
+GBP2 = f02*G2;
+dk1 = GBP1 * sqrt( (df01/f01)^2 + (dG1/G1)^2 ); 
+dk2 = GBP2 * sqrt( (df02/f02)^2 + (dG2/G2)^2 ); 
 f_theo = [100:100:1000000]';
-H_theo1 = G1 ./ sqrt( 1 + (f_theo/k1*G1).^2 );
-H_theo2 = G2 ./ sqrt( 1 + (f_theo/k1*G2).^2 );
+H_theo1 = G1 ./ sqrt( 1 + (f_theo/GBP1*G1).^2 );
+H_theo2 = G2 ./ sqrt( 1 + (f_theo/GBP1*G2).^2 );
 
 %% Plot
 % ==========================  Low Gain Plot ================
