@@ -9,10 +9,10 @@ dataSetup1 = xlsread('RawData.xlsx','Setup1');
 f1 = dataSetup1(:,1);
 ch1vdiv1 = dataSetup1(:,2);
 dei1 = dataSetup1(:,3);
-ei1 = dataSetup1(:,4);
+ei1 = dataSetup1(:,4)/1000;
 ch2vdiv1 = dataSetup1(:,5);
 deo1 = dataSetup1(:,6);
-eo1 = dataSetup1(:,7);
+eo1 = dataSetup1(:,7)/1000;
 H1 = dataSetup1(:,8);
 dH1 = H1 .* sqrt( (deo1./eo1).^2 + (dei1./ei1).^2 );
 
