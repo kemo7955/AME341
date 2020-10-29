@@ -53,7 +53,7 @@ Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part 
 \end{figure}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Gain ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \subsection{Gain}
-In an open loop configuration, the output voltage of an op-amp often reaches saturation and may not provide useful results in many data acquisitions applications. A negative feedback loop, however, allows for greater control over amplification characteristics. Referred to as \textit{gain}, the relationship between input and output voltages can be expressed as :
+In an open loop configuration, the output voltage of an op-amp quickly reaches saturation and may not provide useful results in many data acquisitions applications. A negative feedback loop, however, allows for greater control over amplification characteristics. Referred to as \textit{gain}, the relationship between input and output voltages can be expressed as :
 
 \begin{equation}
     \label{Gain}
@@ -119,35 +119,66 @@ Since it was known that the relationship between gain and frequency is non-linea
 
 % --------------------------------- Results ---------------------------------------
 \section{Results}
-
+Gain as a function of input signal frequency for the low gain negative feedback circuit is plotted in Figure \ref{LowG}. Additionally, the semi-theoretical model expressed in Equation \ref{Htheo} is also plotted for comparison between actual and anticipated results.  
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale = .8]{HighGain.png}
+    \includegraphics[scale = .6]{LowGain.png}
+    \caption{Op-amp in a low gain configuration}
+    \label{LowG}
+\end{figure}
+It is clear that semi-theoretical and experimental models expressed in Equations \ref{Htheo} and \ref{Hexp} are in agreement until the system approaches the cutoff frequency. Beyond the cutoff frequency, however, the two models begin to diverge and the experimental data shows a lower than anticipated gain.
+
+Figure \ref{HighG} shows gain versus input frequency data for the high gain negative feedback circuit. In the this configuration, the experimental and semi-theoretical models agree through the entire domain of frequencies tested.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = .6]{HighGain.png}
     \caption{Op-amp in a high gain configuration}
     \label{HighG}
 \end{figure}
+As anticipated, the cutoff frequency was significantly reduced as a consequence of the greater amount of gain generated. Both experimental sets of data support also the GBD as a property of of the op-amp rather then other circuit elements. Regardless of the resistors chosen to create the circuit, both high and low gain configurations converged towards the same GBD. Thus, both circuits have a unique usable range for amplification that matches ideal gain expressed in Equation \ref{Gain}. In either case, the usable range can be defined by the relationship $f<<f_0$, that is the horizontal regions in Figures \ref{LowG} and \ref{HighG}.
 
+\subsection{Experimental Error}
+To concluded weather experimental and theoretical gain are equivalent, the associated error of each quantity must be taken into account. Furthermore, since experimental gain changes as the system approaches cutoff frequency the analysis shall be performed using using a low frequency data point (i.e., 100Hz). Equations \ref{dGexp} and \ref{dGtheo} represent the relative uncertainties for experimental and theoretical gain. 
 
-\begin{figure}[ht]
+\begin{equation}
+    \Delta G_{exp} = G_{exp} \sqrt{ (\frac{\Delta e_i}{e_i})^2 + (\frac{\Delta e_0}{e_0})^2}
+    \label{dGexp}
+\end{equation}
+\begin{equation}
+    \Delta G_{theo} = G_{theo}\sqrt{(\frac{\Delta R_i}{R_i})^2 + (\frac{\Delta R_0}{R_0})^2 }
+    \label{dGtheo}
+\end{equation}
+
+Since the cutoff frequency in each setup consisted of scanning through various frequencies until the amplification fell within the appropriate window, the cutoff frequency and its relative uncertainty can be expressed using the following set of equations,
+\begin{equation}
+    \begin{split}
+        f_0 = \frac{f_{high} + f_{low}}{2}\\
+        \Delta f_0 = \frac{f_{high} - f_{low}}{2}
+    \end{split}
+\end{equation}
+where the subscripts \textit{high} and \textit{low} denote the two frequencies used to fulfill the amplification requirement.
+
+Table \ref{KeyValues} summarizes key values, as well as relative uncertainties. It is shown that $G_{exp} \pm{\Delta G_{exp}} = G_{theo} \pm{\Delta G_{theo}}$ in both low and high gain configurations.
+\begin{table}[ht]
     \centering
-    \includegraphics[scale = .8]{LowGain.png}
-    \caption{Op-amp in a high gain configuration}
-    \label{LowG}
-\end{figure}
-
-\begin{center}
-    \begin{tabular}{ c | c | c | c }
-    \multicolumn{4}{c}{Key Values} \\
+    \begin{tabular}{ c | c | c | c ||c | c | c | c }
+    \multicolumn{8}{c}{Key Values} \\
     \hline
-    $R_f$     & 196960   & $\Delta R_f$     & 1970 \\
-    $R_{i,1}$ & 19649    & $\Delta R_{i,1}$ & 197  \\
-    $R_{i,2}$ & 1958     & $\Delta R_{i,2}$ & 20   \\
-    $f_{0,1}$ & 85000    & $\Delta f_{0,1}$ & 1000 \\
-    $f_{0,2}$ & 9750     & $\Delta f_{0,2}$ & 250  \\
-    $f^*$ & $9.8*10^{5}$ & $\Delta f^*$     & \\
+    $R_f$ & 196960 & $\Delta R_f$ & 1970 & $e_{i,1}$ & .097 & $\Delta e_{i,1}$ & .002  \\
+    $R_{i,1}$ & 19649 & $\Delta R_{i,1}$ & 197 & $e_{o,1}$ & .973 & $\Delta e_{o,1}$ & .016    \\
+    $R_{i,2}$ & 1958 & $\Delta R_{i,2}$ & 20 & $e_{i,2}$ & .068 & $\Delta e_{i,2}$ & .002     \\
+    $f_{0,1}$ & 85000 & $\Delta f_{0,1}$ & 1000 & $e_{o,2}$ & 6.88 & $\Delta e_{o,2}$ & .156  \\
+    $f_{0,2}$ & 9750 & $\Delta f_{0,2}$ & 250 &  $f^*$ & $9.8*10^{5}$ & $\Delta f^*$ & 28720  \\
+    \hline
+    $G_{exp,1}$ & 10 & $\Delta G_{exp,1}$ & .2 & $G_{theo,1}$ & 10 & $\Delta G_{theo,1}$ & .1 \\
+    $G_{exp,2}$ & 101 & $\Delta G_{exp,2}$ & 3.2 & $G_{theo,2}$ & 101 & $\Delta G_{theo,2}$ & 1.4 
     \end{tabular}
-\end{center}
+    \caption{\small Subscripts 1 and 2 denote experiment setups 1 and 2. Additonally, the subscripts i,o,and f denote input, output and feedback,respectively. For convenience, the uncertainty of each resistor was taken to be $\pm{1\%}$.}
+    \label{KeyValues}
+\end{table}
+
 % --------------------------------- MATLAB ----------------------------------------
 \newpage
 \appendix
