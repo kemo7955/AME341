@@ -110,7 +110,7 @@ the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer
 % -------------------------- Methods and Materials ------------------------------
 \section{Procedures}
 \subsection{Materials and Experiment Setup}
-By using a National Instruments VirtualBench VB-8012 to take measurements and control input signals, the LM741 op-amp was characterized using frequencies ranging from 100Hz to 1MHz. The experiment consisted of two nearly identical circuits with subtle different in input resistors. Input resistors were selected based on nominal values of 20k$\Omega$ and 2k$\Omega$ for setups 1 and 2, respectively. The feedback resistor was selected based on a nominal value of 200k$\Omega$ and was kept throughout the entire experiment. This selection of resistors ensured setup 1 result in a low gain, whereas, setup 2 would result in a high gain. All resistors were measured before being integrated into the circuit. Channel 1 and channel 2 were setup to measure input and output voltages, and all grounds were connected to a common ground. Both experimental setups were based on the schematic shown in Figure \ref{NFL} and followed identical procedures. 
+By using a National Instruments VirtualBench VB-8012 to take measurements and control input signals, the LM741 op-amp was characterized using frequencies ranging from 100Hz to 1MHz. The experiment consisted of two nearly identical circuits with subtle differences in input resistors. Input resistors were selected based on nominal values of 20k$\Omega$ and 2k$\Omega$ for setups 1 and 2, respectively. The feedback resistor was selected based on a nominal value of 200k$\Omega$ and was kept throughout the entire experiment. This selection of resistors ensured setup 1 and setup 2 resulted in low and high gain circuits, respectively. All resistors were measured before being integrated into the circuit. Channel 1 and channel 2 were setup to measure input and output voltages, and all grounds were connected to a common ground. Both experimental setups were based on the schematic shown in Figure \ref{NFL} and followed identical procedures. 
 
 \subsection{Methods}
 Beginning with a frequency of 100Hz, the experimental gain was calculated by taking the ratio between measured values of output and input voltages. According to the semi-theoretical model, the ratio between output and input voltages should be equal to the ratio between feedback and input resistors. This served as the initial benchmark for comparing the experimental and semi-theoretical models.
@@ -124,7 +124,7 @@ Gain as a function of input frequency for the low gain negative feedback circuit
 \begin{figure}[ht]
     \centering
     \includegraphics[scale = .6]{LowGain.png}
-    \caption{Op-amp in a low gain configuration}
+    \caption{Setup 1 with op-amp in a low gain configuration}
     \label{LowG}
 \end{figure}
 It is clear that semi-theoretical and experimental models expressed in Equations \ref{Htheo} and \ref{Hexp} are in agreement until the system approaches the cutoff frequency. Beyond the cutoff frequency, however, the two models begin to diverge and the experimental data shows a lower than anticipated gain.
@@ -134,7 +134,7 @@ Figure \ref{HighG} shows gain versus input frequency data for the high gain nega
 \begin{figure}[ht]
     \centering
     \includegraphics[scale = .6]{HighGain.png}
-    \caption{Op-amp in a high gain configuration}
+    \caption{Setup 2 with op-amp in a high gain configuration}
     \label{HighG}
 \end{figure}
 As anticipated, the cutoff frequency was significantly reduced as a consequence of the greater amount of gain generated. Both experimental sets of data also support the GBP as a property of the op-amp rather then other circuit elements. Regardless of the resistors chosen to create the circuit, both high and low gain configurations converged towards the same GBP. Thus, both circuits have a unique usable range for amplification that matches the ideal gain expressed in Equation \ref{Gain}. In either case, the usable range can be defined by the relationship $f<<f_0$, that is, the horizontal regions in Figures \ref{LowG} and \ref{HighG}.
