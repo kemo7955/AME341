@@ -1,5 +1,5 @@
 clear;clc;close all
-format short
+format long
 %% Import and Label Data for each setup
 Ri1 =  19649;
 Rf1 = 196960;
