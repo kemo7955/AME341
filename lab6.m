@@ -64,7 +64,7 @@ H_theo1 = G1 ./ sqrt( 1 + (f_theo/k1*G1).^2 );
 H_theo2 = G2 ./ sqrt( 1 + (f_theo/k1*G2).^2 );
 
 %% Plot
-% ==========================  Low Gain Plot ===============================
+% ==========================  Low Gain Plot ================
 figure(1)
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
 ylim([0 110])
@@ -76,7 +76,7 @@ cutoff1 = xline(f01,'--r');
 xlabel('$f[Hz]$','FontSize',12)
 ylabel('$|H|$','FontSize',12)
 legend([p1s cutoff1 p1p],{'Experimental Data','Cutoff Frequency','Semi-Theoricial'})
-% ------------------- Minor-Plot for Figure 1 -----------------------------
+% ------------------- Minor-Plot for Figure 1 --------------
 ax1 = axes('Position',[.45 .25 .2 .2]);
 box on;hold on
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
@@ -88,7 +88,7 @@ xlabel('','FontSize',10,'Interpreter','latex')
 ylabel('','FontSize',10,'Interpreter','latex')
 xlim([f1_sub(1) f1_sub(end)])
 
-% ==========================  High Gain Plot ==============================
+% ==========================  High Gain Plot ==============
 figure(2)
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
 ylim([0 110])
@@ -100,7 +100,7 @@ cutoff2 = xline(f02,'--r');
 xlabel('$f[Hz]$','FontSize',12)
 ylabel('$|H|$','FontSize',12)
 legend([p2s cutoff2 p2p],{'Experimental Data','Cutoff Frequency','Semi-Theoricial'})
-% ------------------- Minor-Plot for Figure 2 -----------------------------
+% ------------------- Minor-Plot for Figure 2 -------------
 ax2 = axes('Position',[.25 .6 .2 .2]);
 box on;hold on
 set(gca,'xscale','log','yscale','log','defaulttextinterpreter','Latex')
