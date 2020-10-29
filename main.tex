@@ -27,7 +27,7 @@
     \bigskip
     {\Large Kevin Moran} \\
     \bigskip
-    Lab Partner : Jorge\\
+    Lab Partner : Jorge Soberanis\\
     Date of Experiment : Thursday, October 14th, 2020
 
     \bigskip\bigskip\bigskip
@@ -43,23 +43,23 @@
 
 % --------------------------------- Introduction -----------------------------------
 \section{Introduction}
-Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part of data acquisition circuits and circuits that rely on threshold voltage inputs to activate additional components. As the name suggest, om-amps serve as voltage amplifiers and can be setup in various configurations using passive circuit elements such as resistors and capacitors. Figure \ref{NFL} illustrates a LM741 op-amp in a negative feedback loop configuration.
+Operational Amplifiers, often referred to as \textit{op-amps}, are a vital part of data acquisition circuits and circuits that rely on threshold voltage inputs to activate additional components. As the name suggest, op-amps serve as voltage amplifiers and can be setup in various configurations using passive circuit elements such as resistors and capacitors. Figure \ref{NFL} illustrates a LM741 op-amp in a negative feedback loop configuration.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=1.25]{feedback.png}
-    \caption{\small LM741 operation amplifier negative feedback loop schematic. All components of the circuit are grounded using a common ground. CH1 and CH2 represent probe connection on Vbench Interface.}
+    \caption{\small LM741 operational amplifier negative feedback loop schematic. All components of the circuit are grounded using a common ground. CH1 and CH2 represent probe connection on the Vbench Interface.}
     \label{NFL}
 \end{figure}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Gain ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \subsection{Gain}
-In an open loop configuration, the output voltage of an op-amp quickly reaches saturation and may not provide useful results in many data acquisitions applications. A negative feedback loop, however, allows for greater control over amplification characteristics. Referred to as \textit{gain}, the relationship between input and output voltages can be expressed as :
+In an open loop configuration, the output voltage of an op-amp quickly reaches saturation and may not provide useful results in many data acquisition applications. A negative feedback loop, however, allows for greater control over amplification characteristics. Referred to as \textit{gain}, the relationship between input and output voltages can be expressed as :
 
 \begin{equation}
     \label{Gain}
     e_o = -Ge_i = -\frac{R_f}{R_i}e_i
 \end{equation}
-$G$ represents gain, and $R_f$ and $R_i$ correspond to resistors shown in Figure \ref{NFL}. The negative sign in Equation \ref{Gain} is a consequence of the input voltage, $e_i$, feeding into the inverting channel on the op-amp, and $e_o$ represents the expected output from the op-amp. Unlike passive circuit elements, op-amps need an external power source to operate. The power supply is shown to by the inputs V+ and V-.
+$G$ represents gain, and $R_f$ and $R_i$ correspond to resistors shown in Figure \ref{NFL}. The negative sign in Equation \ref{Gain} is a consequence of the input voltage, $e_i$, feeding into the inverting channel on the op-amp, and $e_o$ represents the output voltage from the op-amp. Unlike passive circuit elements, op-amps need an external power source to operate. The power supply is shown by the inputs V+ and V-.
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 1st Order Sys ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \subsection{First Order System}
@@ -68,12 +68,12 @@ Developing a first order differential equation and making the assumption $R_f >>
     \label{1stOrder}
     \frac{\mu R_f}{A R_i}\frac{de_o}{dt} + e_o = -\frac{R_f}{R_i}e_i 
 \end{equation}
-where variables $\mu$ and $A$ are properties of a given op-amp. Solving the first order ODE yields a complex solution, however, deriving a transfer function and taking taking the modulus produces a semi-analytical model : 
+where variables $\mu$ and $A$ are properties of a given op-amp. Solving the first order ODE yields a complex solution, however, deriving a transfer function and taking the modulus produces a semi-theoretical model : 
 \begin{equation}
     \label{Htheo}
     |H|_{theo} = \frac{R_f/R_i}{\sqrt{1 + \omega^2(\frac{\mu}{A}\frac{R_f}{R_i})^2}}
 \end{equation}
-Since $\mu$ and $A$ are experimentally derive quantities, the subscript \textit{theo} denotes a semi-theoretical model, and the natural frequency can be rewritten in terms of frequency as $\omega = 2\pi f$. Furthermore, the modulus of the transfer function can also be written in terms of input and output voltage as
+Since $\mu$ and $A$ are experimentally derive quantities, the subscript \textit{theo} denotes a semi-theoretical model, and the natural frequency, $\omega$, can be rewritten in terms of frequency as $\omega = 2\pi f$. Furthermore, the modulus of the transfer function can also be written in terms of input and output voltage as
 \begin{equation}
     \label{Hexp}
     |H|_{exp} = \frac{e_o}{e_i}
@@ -82,18 +82,18 @@ where the subscript \textit{exp} refers to a model that is exclusively dependent
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ f0 and GBP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \subsection{Cutoff Frequency and Gain Bandwidth Product}
-In a negative feedback loop, the relationship between $|H|$ vs $f$ can be broken categorized into three distinct regions :
+In a negative feedback loop, the relationship between amplification and frequency can be categorized by three distinct regions :
 \begin{align*}
     2 \pi f \frac{\mu R_f}{A R_i} << 1 &  \Rightarrow |H| = G \\
     2 \pi f \frac{\mu R_f}{A R_i} >> 1 &  \Rightarrow |H| = 1 \\
     2 \pi f \frac{\mu R_f}{A R_i} \ =1 &  \Rightarrow |H| = \frac{G}{\sqrt{2}}
 \end{align*}
-The latter of the regions represents a particularly interesting relationship known as a circuits cutoff frequency. Explicitly defined by relationship,
+The latter of the regions represents a particularly interesting relationship known as a circuits cutoff frequency. Explicitly defined by the relationship,
 \begin{equation}
     \label{cutoff}
     f_0 = \frac{A R_i}{2\pi \mu R_f}
 \end{equation}
-the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer amplify the input voltage and thus, begins to attenuate the signal. In addition to identifying the range of frequencies for max gain given a set of resistors in a circuit, the cutoff frequency is also important for defining an op-amps Gain Bandwidth Product (GBP). Represented by the variable $f^*$ in Equation 6, GBP is strictly a property a property of the op-amp in the circuit that governs the inverse relationship between gain and cutoff frequency (i.e., as gain increase, cutoff frequency decrease and vice versa).
+the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer effectively amplify the input voltage and thus, begins to attenuate the signal. In addition to identifying the range of frequencies for optimal gain in a given circuit, the cutoff frequency is also important for defining an op-amps Gain Bandwidth Product (GBP). Represented by the variable $f^*$ in Equation 6, GBP is strictly a property of the op-amp in the circuit. This governs the inverse relationship between gain and cutoff frequency (i.e., as gain increase, cutoff frequency decrease and vice versa).
 \begin{equation}
     \label{GBP}
     f^* = f_0G
@@ -113,13 +113,13 @@ the cutoff frequency, $f_0$, is the frequency at which the circuit can no longer
 By using a National Instruments VirtualBench VB-8012 to take measurements and control input signals, and setting up a negative feedback loop as shown in Figure \ref{NFL}, the LM741 op-amp was characterized using frequencies ranging from 100Hz to 1MHz and two different gains. The input resistors were selected based on nominal values of 2k$\Omega$ and 20k$\Omega$ for setups 1 and 2, respectively. The feedback resistor was selected based on a nominal value of 200k$\Omega$ and was kept throughout the entire experiment. All resistors were measured before being integrated into the circuit. Channel 1 and channel 2 were setup to measure input and output voltages, and all grounds were connected to a common ground. Both experimental setups were based on the schematic shown in Figure \ref{NFL} and followed identical procedures. 
 
 \subsection{Methods}
-Beginning with a frequency of 100Hz, the experimental gain was calculated by taking ratio between measured values of output and input voltages. According the semi-theoretical model, the ratio between output and input voltage should be equal to ratio between feedback and input resistors. This served as the initial benchmark for comparing the experimental and semi-theoretical models.
+Beginning with a frequency of 100Hz, the experimental gain was calculated by taking the ratio between measured values of output and input voltages. According to the semi-theoretical model, the ratio between output and input voltages should be equal to the ratio between feedback and input resistors. This served as the initial benchmark for comparing the experimental and semi-theoretical models.
 
-Since it was known that the relationship between gain and frequency is non-linear near the cutoff frequency, input and output voltage measurements were concentrated in this region. Initial guesses for the cutoff frequency were determined by estimating what the output voltage would need to be to satisfy the requirement $e_o/e_i = G/\sqrt{2}$. Since $e_i$ was relatively constant, the frequency was a adjusted in a series of trial and error modifications until $e_o$ was measurement within the appropriate value. Once the cutoff frequency was determined within reasonable experimental expectation, input and output voltages were measured, used to calculate $|H|$ using Equation \ref{Hexp}, and plotted until on a log-log scale until the non-linear region of the $|H|\ vs\ f$ graph was well characterized. Afterwards, the linear regions were characterized by taking a enough data to adequately represent the system response to relatively high and low frequencies.
+Since it was known that the relationship between gain and frequency is non-linear near the cutoff frequency, input and output voltage measurements were concentrated in this region. Initial guesses for the cutoff frequency were determined by estimating what the output voltage would need to be to satisfy the requirement $e_o/e_i = G/\sqrt{2}$. Since $e_i$ was relatively constant, the frequency was adjusted in a series of trial and error modifications until $e_o$ was measurement within the appropriate value. Once the cutoff frequency was determined within reasonable experimental expectation, input and output voltages were measured, used to calculate amplification via Equation \ref{Hexp}, and plotted until on a log-log scale until the non-linear region of the $|H|\ vs\ f$ graph was well characterized. Afterwards, the linear regions were characterized by taking a enough data to adequately represent the system response to relatively high and low frequencies. Approximately five to ten data points in each linear region were obtained, ensuring the frequency values were spaced out to evenly to cover the entire region.
 
 % --------------------------------- Results ---------------------------------------
 \section{Results}
-Gain as a function of input signal frequency for the low gain negative feedback circuit is plotted in Figure \ref{LowG}. Additionally, the semi-theoretical model expressed in Equation \ref{Htheo} is also plotted for comparison between actual and anticipated results.  
+Gain as a function of input frequency for the low gain negative feedback circuit is plotted in Figure \ref{LowG}. Additionally, the semi-theoretical model expressed in Equation \ref{Htheo} is also plotted for comparison between experimental and anticipated results.  
 
 \begin{figure}[ht]
     \centering
@@ -129,7 +129,7 @@ Gain as a function of input signal frequency for the low gain negative feedback 
 \end{figure}
 It is clear that semi-theoretical and experimental models expressed in Equations \ref{Htheo} and \ref{Hexp} are in agreement until the system approaches the cutoff frequency. Beyond the cutoff frequency, however, the two models begin to diverge and the experimental data shows a lower than anticipated gain.
 
-Figure \ref{HighG} shows gain versus input frequency data for the high gain negative feedback circuit. In the this configuration, the experimental and semi-theoretical models agree through the entire domain of frequencies tested.
+Figure \ref{HighG} shows gain versus input frequency data for the high gain negative feedback circuit. In this configuration, the experimental and semi-theoretical models agree throughout the entire domain of frequencies tested.
 
 \begin{figure}[ht]
     \centering
@@ -137,10 +137,10 @@ Figure \ref{HighG} shows gain versus input frequency data for the high gain nega
     \caption{Op-amp in a high gain configuration}
     \label{HighG}
 \end{figure}
-As anticipated, the cutoff frequency was significantly reduced as a consequence of the greater amount of gain generated. Both experimental sets of data support also the GBD as a property of of the op-amp rather then other circuit elements. Regardless of the resistors chosen to create the circuit, both high and low gain configurations converged towards the same GBD. Thus, both circuits have a unique usable range for amplification that matches ideal gain expressed in Equation \ref{Gain}. In either case, the usable range can be defined by the relationship $f<<f_0$, that is the horizontal regions in Figures \ref{LowG} and \ref{HighG}.
+As anticipated, the cutoff frequency was significantly reduced as a consequence of the greater amount of gain generated. Both experimental sets of data support also the GBP as a property of the op-amp rather then other circuit elements. Regardless of the resistors chosen to create the circuit, both high and low gain configurations converged towards the same GBP. Thus, both circuits have a unique usable range for amplification that matches the ideal gain expressed in Equation \ref{Gain}. In either case, the usable range can be defined by the relationship $f<<f_0$, that is, the horizontal regions in Figures \ref{LowG} and \ref{HighG}.
 
 \subsection{Experimental Error}
-To concluded weather experimental and theoretical gain are equivalent, the associated error of each quantity must be taken into account. Furthermore, since experimental gain changes as the system approaches cutoff frequency the analysis shall be performed using using a low frequency data point (i.e., 100Hz). Equations \ref{dGexp} and \ref{dGtheo} represent the relative uncertainties for experimental and theoretical gain. 
+To concluded whether experimental and theoretical gain are equivalent, the associated error of each quantity must be taken into account. Furthermore, since experimental gain changes as the system approaches cutoff frequency, the analysis shall be performed using a low frequency data point (i.e., 100Hz). Equations \ref{dGexp} and \ref{dGtheo} represent the relative uncertainties for experimental and theoretical gain. 
 
 \begin{equation}
     \Delta G_{exp} = G_{exp} \sqrt{ (\frac{\Delta e_i}{e_i})^2 + (\frac{\Delta e_0}{e_0})^2}
@@ -175,7 +175,7 @@ Table \ref{KeyValues} summarizes key values, as well as relative uncertainties. 
     $G_{exp,1}$ & 10 & $\Delta G_{exp,1}$ & .2 & $G_{theo,1}$ & 10 & $\Delta G_{theo,1}$ & .1 \\
     $G_{exp,2}$ & 101 & $\Delta G_{exp,2}$ & 3.2 & $G_{theo,2}$ & 101 & $\Delta G_{theo,2}$ & 1.4 
     \end{tabular}
-    \caption{\small Subscripts 1 and 2 denote experiment setups 1 and 2. Additonally, the subscripts i,o,and f denote input, output and feedback,respectively. For convenience, the uncertainty of each resistor was taken to be $\pm{1\%}$.}
+    \caption{\small Subscripts 1 and 2 denote experiment setups 1 and 2. Additionally, the subscripts i,o,and f denote input, output and feedback,respectively. For convenience, the uncertainty of each resistor was taken to be $\pm{1\%}$.}
     \label{KeyValues}
 \end{table}
 
